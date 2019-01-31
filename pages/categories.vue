@@ -1,23 +1,36 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-data-table
-      :headers="headers"
-      :items="desserts"
-      class="elevation-1"
-    >
+  <v-layout column justify-center align-center>
+    <v-data-table :headers="headers" :items="categories" class="elevation-1">
       <template slot="items" slot-scope="props">
-        <td>{{ props.item.id }}</td>
-        <td class="text-xs-right">{{ props.item.label }}</td>
+        <td>
+          {{ props.item.id }}
+        </td>
+        <td class="text-xs-right">
+          {{ props.item.label }}
+        </td>
+        <td class="text-xs-right">
+          {{ props.item.minimumPrice }}
+        </td>
+        <td class="text-xs-right">
+          {{ props.item.maximumPrice }}
+        </td>
+        <td class="text-xs-right">
+          {{ props.item.unit }}
+        </td>
+        <td class="text-xs-right">
+          {{ props.item.placeholder }}
+        </td>
+        <td class="text-xs-right">
+          {{ props.item.createdAt }}
+        </td>
+        <td class="text-xs-right">
+          {{ props.item.updatedAt }}
+        </td>
       </template>
     </v-data-table>
   </v-layout>
 </template>
 <script>
-import axios from '~/plugins/axios'
 export default {
   data() {
     return {
@@ -28,31 +41,39 @@ export default {
           sortable: true,
           value: 'id'
         },
-        { text: 'Label', value: 'label' }
+        { text: 'Label', value: 'label' },
+        { text: 'Minimum Price', value: 'minimumPrice' },
+        { text: 'Maximum Price', value: 'maximumPrice' },
+        { text: 'Unit', value: 'unit' },
+        { text: 'Placeholder', value: 'placeholder' },
+        { text: 'Created at', value: 'createdAt' },
+        { text: 'Updated at', value: 'updatedAt' }
       ],
-      desserts: [],
+      categories: [],
       errors: []
     }
   },
-  // Fetches posts when the component is created.
-  created() {
-    axios.get('/categories')
-      .then((response) => {
-        // JSON responses are automatically parsed.
-        this.desserts = response.data
-      })
-      .catch((e) => {
-        this.errors.push(e)
-      })
+  // Fetches categories when the component is created.
+  async created() {
+    // this.$axios.$get('/categories')
+    //   .then((response) => {
+    //     // JSON responses are automatically parsed.
+    //     this.categories = response.data
+    //   })
+    //   .catch((e) => {
+    //     this.errors.push(e)
+    //   })
 
     // async / await version (created() becomes async created())
-
-    // try {
-    //   const response = await axios.get(url)
-    //   this.desserts = response.data
-    // } catch (e) {
-    //   this.errors.push(e)
-    // }
+    try {
+      const response = await this.$axios.$get('/categories')
+      /* eslint-disable no-console */
+      console.log(response)
+      /* eslint-enable no-console */
+      this.categories = response
+    } catch (e) {
+      this.errors.push(e)
+    }
   }
 }
 </script>

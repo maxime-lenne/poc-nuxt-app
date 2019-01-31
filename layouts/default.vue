@@ -39,11 +39,6 @@
         <nuxt />
       </v-container>
     </v-content>
-    <v-footer
-      :fixed="fixed"
-      app
-    >
-    </v-footer>
   </v-app>
 </template>
 
@@ -67,8 +62,6 @@ export default {
         }
       ],
       miniVariant: false,
-      right: true,
-      rightDrawer: false,
       title: 'Nuxt app'
     }
   }

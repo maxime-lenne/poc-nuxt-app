@@ -25,10 +25,6 @@ module.exports = {
     ]
   },
 
-  env: {
-    baseUrl: process.env.NUXT_ENV_API_URL
-  },
-
   /*
   ** Customize the progress-bar color
   */
@@ -61,7 +57,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseUrl: process.env.NUXT_ENV_API_URL
+    //baseUrl: process.env.API_URL
   },
 
   /*
