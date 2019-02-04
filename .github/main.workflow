@@ -3,9 +3,15 @@ workflow "New workflow" {
   resolves = ["Release"]
 }
 
-action "Build" {
+action "Install" {
   uses = "actions/npm@master"
   args = "install"
+}
+
+action "Build" {
+  needs = "Install"
+  uses = "actions/npm@master"
+  args = "build"
 }
 
 action "Lint" {
