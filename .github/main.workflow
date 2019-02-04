@@ -36,7 +36,7 @@ action "Master" {
 action "Login" {
   needs = "Master"
   uses = "actions/heroku@master"
-  args = "container:login"
+  args = "login"
   secrets = ["HEROKU_API_KEY"]
 }
 
