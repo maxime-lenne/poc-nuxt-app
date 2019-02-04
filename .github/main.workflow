@@ -21,14 +21,14 @@ action "Lint" {
 }
 
 action "Test" {
-  needs = "Lint"
+  needs = "Build"
   uses = "actions/npm@master"
   args = "run test"
 }
 
 # Filter for master branch
 action "Master" {
-  needs = "Test"
+  needs = ["Test", "Lint"]
   uses = "actions/bin/filter@master"
   args = "branch master"
 }
@@ -52,4 +52,14 @@ action "Release" {
   needs = "Push"
   args = "container:release -a poc-nuxt-app-2 web"
   secrets = ["HEROKU_API_KEY"]
+}
+
+action "verify-production" {
+  needs = ["release-production"]
+  uses = "actions/heroku@master"
+  args = ["apps:info", "$HEROKU_APP"]
+  secrets = ["HEROKU_API_KEY"]
+  env = {
+    HEROKU_APP = "octozen"
+  }
 }
