@@ -35,12 +35,7 @@ export default {
   data() {
     return {
       headers: [
-        {
-          text: 'Id',
-          align: 'left',
-          sortable: true,
-          value: 'id'
-        },
+        { text: 'Id', align: 'left', sortable: true, value: 'id' },
         { text: 'Label', value: 'label' },
         { text: 'Minimum Price', value: 'minimumPrice' },
         { text: 'Maximum Price', value: 'maximumPrice' },
@@ -55,21 +50,8 @@ export default {
   },
   // Fetches categories when the component is created.
   async created() {
-    // this.$axios.$get('/categories')
-    //   .then((response) => {
-    //     // JSON responses are automatically parsed.
-    //     this.categories = response.data
-    //   })
-    //   .catch((e) => {
-    //     this.errors.push(e)
-    //   })
-
-    // async / await version (created() becomes async created())
     try {
       const response = await this.$axios.$get('/categories')
-      /* eslint-disable no-console */
-      console.log(response)
-      /* eslint-enable no-console */
       this.categories = response
     } catch (e) {
       this.errors.push(e)
