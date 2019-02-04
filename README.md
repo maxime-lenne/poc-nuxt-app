@@ -24,3 +24,5 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 ##
 
 generate app with https://github.com/nuxt/create-nuxt-app
+
+Just a commit to test action workflow
