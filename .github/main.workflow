@@ -43,14 +43,14 @@ action "Login" {
 action "Push" {
   uses = "actions/heroku@master"
   needs = "Login"
-  args = "container:push -a poc-nuxt-app-2 web"
+  args = "heroku git:remote -a poc-nuxt-app-2 web"
   secrets = ["HEROKU_API_KEY"]
 }
 
 action "release-production" {
   uses = "actions/heroku@master"
   needs = "Push"
-  args = "container:release -a poc-nuxt-app-2 web"
+  runs = "git push heroku master"
   secrets = ["HEROKU_API_KEY"]
 }
 
