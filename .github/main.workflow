@@ -1,6 +1,6 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["Release"]
+  resolves = ["verify-production"]
 }
 
 action "Install" {
@@ -47,7 +47,7 @@ action "Push" {
   secrets = ["HEROKU_API_KEY"]
 }
 
-action "Release" {
+action "release-production" {
   uses = "actions/heroku@master"
   needs = "Push"
   args = "container:release -a poc-nuxt-app-2 web"
@@ -60,6 +60,6 @@ action "verify-production" {
   args = ["apps:info", "$HEROKU_APP"]
   secrets = ["HEROKU_API_KEY"]
   env = {
-    HEROKU_APP = "octozen"
+    HEROKU_APP = "poc-nuxt-app-2"
   }
 }
