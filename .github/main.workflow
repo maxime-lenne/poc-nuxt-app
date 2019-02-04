@@ -1,6 +1,6 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["Publish"]
+  resolves = ["Release"]
 }
 
 action "Build" {
@@ -11,13 +11,13 @@ action "Build" {
 action "Lint" {
   needs = "Build"
   uses = "actions/npm@master"
-  args = "lint"
+  args = "run lint"
 }
 
 action "Test" {
   needs = "Lint"
   uses = "actions/npm@master"
-  args = "test"
+  args = "run test"
 }
 
 # Filter for master branch
@@ -27,7 +27,23 @@ action "Master" {
   args = "branch master"
 }
 
-action "Publish" {
-   uses = "actions/heroku@master"
+action "Login" {
   needs = "Master"
+  uses = "actions/heroku@master"
+  args = "container:login"
+  secrets = ["HEROKU_API_KEY"]
+}
+
+action "Push" {
+  uses = "actions/heroku@master"
+  needs = "Login"
+  args = "container:push -a poc-nuxt-app-2 web"
+  secrets = ["HEROKU_API_KEY"]
+}
+
+action "Release" {
+  uses = "actions/heroku@master"
+  needs = "Push"
+  args = "container:release -a poc-nuxt-app-2 web"
+  secrets = ["HEROKU_API_KEY"]
 }
