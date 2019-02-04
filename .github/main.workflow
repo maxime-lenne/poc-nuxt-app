@@ -43,7 +43,7 @@ action "Login" {
 action "Push" {
   uses = "actions/heroku@master"
   needs = "Login"
-  args = "git:remote -a poc-nuxt-app-2 web"
+  args = "git:remote -a poc-nuxt-app-2"
   secrets = ["HEROKU_API_KEY"]
 }
 
