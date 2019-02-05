@@ -1,21 +1,22 @@
 # Build step
 FROM node:alpine as build-stage
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+ENV DIRPATH /usr/src
+ENV DIRNAME app
+RUN mkdir -p $DIRPATH/$DIRNAME
+WORKDIR $DIRPATH/$DIRNAME
 
 # Install app dependencies
 RUN apk update && apk upgrade && apk add git
 
 # Detect whether you have a yarn.lock already and if so
 # just install deps listed on lock file
-ONBUILD COPY package.json /usr/src/app/
-ONBUILD COPY yarn.lock /usr/src/app/
-ONBUILD RUN yarn install
-ONBUILD COPY . /usr/src/app/
+COPY package.json .
+COPY yarn.lock .
+ONBUILD RUN yarn install --quiet
+COPY . .
 ONBUILD RUN yarn build
 
 # production step
-# FROM node:alpine as production-stage
 
 # Expose env host
 # This is needed to ensure communication between containers
