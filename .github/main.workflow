@@ -51,7 +51,10 @@ action "release-production" {
   uses = "actions/heroku@master"
   needs = "Push"
   runs = "git push heroku master"
-  secrets = ["HEROKU_API_KEY"]
+  secrets = [
+    "HEROKU_API_KEY",
+    "GITHUB_TOKEN",
+  ]
 }
 
 action "verify-production" {
