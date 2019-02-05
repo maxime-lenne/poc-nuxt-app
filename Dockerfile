@@ -14,6 +14,6 @@ WORKDIR /app
 # Run server app
 # Detect whether you have a yarn.lock already and if so
 # just install deps listed on lock file
-CMD yarn install
-CMD yarn build
-CMD yarn start
+RUN yarn install
+RUN yarn build
+RUN yarn start
