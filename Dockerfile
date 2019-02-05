@@ -8,4 +8,6 @@ ENV HOST 0.0.0.0
 # Run server app
 # Detect whether you have a yarn.lock already and if so
 # just install deps listed on lock file
-CMD yarn $([ -f yarn.lock ] && echo "install") && $(yarn bin)/nuxt dev
+CMD yarn install
+CMD yarn build
+CMD yarn start
