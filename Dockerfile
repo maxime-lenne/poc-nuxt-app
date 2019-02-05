@@ -4,6 +4,8 @@ WORKDIR /usr/src
 # This is needed to ensure communication between containers
 # between docker containers
 ENV HOST 0.0.0.0
+ENV NODE_ENV=production
+EXPOSE 3000
 
 RUN mkdir -p /app
 COPY . /app
