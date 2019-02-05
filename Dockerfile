@@ -17,3 +17,5 @@ WORKDIR /app
 RUN yarn install
 RUN yarn build
 RUN yarn start
+
+CMD [ "yarn", "start" ]
