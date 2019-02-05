@@ -40,18 +40,24 @@ action "Login" {
   secrets = ["HEROKU_API_KEY"]
 }
 
-action "Push" {
+action "push-production" {
   uses = "actions/heroku@master"
   needs = "Login"
-  args = "git:remote -a poc-nuxt-app-2"
+  args = ["container:push", "--app", "$HEROKU_APP", "web"]
   secrets = ["HEROKU_API_KEY"]
+  env = {
+    HEROKU_APP = "poc-nuxt-app-2"
+  }
 }
 
 action "release-production" {
   uses = "actions/heroku@master"
-  needs = "Push"
-  runs = "git push heroku master"
+  needs = "push-production"
+  args = ["container:release", "--app", "$HEROKU_APP", "web"]
   secrets = ["HEROKU_API_KEY"]
+  env = {
+    HEROKU_APP = "poc-nuxt-app-2"
+  }
 }
 
 action "verify-production" {
