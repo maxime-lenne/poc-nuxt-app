@@ -5,6 +5,10 @@ WORKDIR /usr/src
 # between docker containers
 ENV HOST 0.0.0.0
 
+RUN mkdir -p /app
+COPY . /app
+WORKDIR /app
+
 # Run server app
 # Detect whether you have a yarn.lock already and if so
 # just install deps listed on lock file
