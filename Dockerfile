@@ -12,9 +12,9 @@ RUN apk update && apk upgrade && apk add git
 # just install deps listed on lock file
 COPY package.json .
 COPY yarn.lock .
-ONBUILD RUN yarn install --quiet
+RUN yarn install --quiet
 COPY . .
-ONBUILD RUN yarn build
+RUN yarn build
 
 # production step
 
