@@ -46,7 +46,7 @@ action "push-production" {
   args = ["container:push", "-a", "$HEROKU_APP", "web"]
   secrets = ["HEROKU_API_KEY"]
   env = {
-    HEROKU_APP = "poc-nuxt-app-2"
+    HEROKU_APP = "poc-nuxt-app"
   }
 }
 
@@ -56,7 +56,7 @@ action "release-production" {
   args = ["container:release", "-a", "$HEROKU_APP", "web"]
   secrets = ["HEROKU_API_KEY"]
   env = {
-    HEROKU_APP = "poc-nuxt-app-2"
+    HEROKU_APP = "poc-nuxt-app"
   }
 }
 
@@ -66,6 +66,6 @@ action "verify-production" {
   args = ["apps:info", "$HEROKU_APP"]
   secrets = ["HEROKU_API_KEY"]
   env = {
-    HEROKU_APP = "poc-nuxt-app-2"
+    HEROKU_APP = "poc-nuxt-app"
   }
 }
