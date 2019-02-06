@@ -17,7 +17,7 @@ COPY package.json .
 COPY yarn.lock .
 RUN yarn install --quiet
 COPY . .
-ONBUILD yarn build
+RUN yarn build
 
 # production step
 
