@@ -47,7 +47,7 @@ action "push-production" {
   secrets = ["HEROKU_API_KEY"]
   env = {
     HEROKU_APP = "poc-nuxt-app"
-    API_URL= "https://poc-nest-api.herokuapp.com"
+    API_URL = "https://poc-nest-api.herokuapp.com"
   }
 }
 
@@ -58,7 +58,7 @@ action "release-production" {
   secrets = ["HEROKU_API_KEY"]
   env = {
     HEROKU_APP = "poc-nuxt-app"
-    API_URL= "https://poc-nest-api.herokuapp.com"
+    API_URL = "https://poc-nest-api.herokuapp.com"
   }
 }
 
