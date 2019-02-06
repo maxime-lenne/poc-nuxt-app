@@ -26,3 +26,14 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 generate app with https://github.com/nuxt/create-nuxt-app
 
 Just a commit to test action workflow
+
+## docker :
+build image in local :  
+```bash
+$ docker build . --build-arg API_URL=http://localhost:3001
+```
+
+Run in local:  
+```bash
+$ docker run -it -p 3000:3000 a4b23fd3e7df
+```
