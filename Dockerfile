@@ -9,7 +9,7 @@ WORKDIR $DIRPATH/$DIRNAME
 RUN apk update && apk upgrade && apk add git
 
 ARG API_URL
-# ENV API_URL $API_URL
+ENV API_URL=$API_URL
 
 # Detect whether you have a yarn.lock already and if so
 # just install deps listed on lock file
@@ -17,7 +17,7 @@ COPY package.json .
 COPY yarn.lock .
 RUN yarn install --quiet
 COPY . .
-RUN yarn build
+ONBUILD yarn build
 
 # production step
 
