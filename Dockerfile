@@ -1,5 +1,9 @@
 # Build step
 FROM node:alpine as build-stage
+
+ARG API_URL
+# ENV API_URL $API_URL
+
 ENV DIRPATH /usr/src
 ENV DIRNAME app
 RUN mkdir -p $DIRPATH/$DIRNAME
@@ -7,10 +11,6 @@ WORKDIR $DIRPATH/$DIRNAME
 
 # Install app dependencies
 RUN apk update && apk upgrade && apk add git
-
-ARG API_URL
-
-# ENV API_URL $API_URL
 
 # Detect whether you have a yarn.lock already and if so
 # just install deps listed on lock file
