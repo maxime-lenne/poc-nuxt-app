@@ -8,15 +8,6 @@ WORKDIR $DIRPATH/$DIRNAME
 # Install app dependencies
 RUN apk update && apk upgrade && apk add git
 
-RUN echo $API_URL
-
-ARG API_URL
-
-RUN echo $API_URL
-ENV API_URL $API_URL
-
-RUN echo $API_URL
-
 # Detect whether you have a yarn.lock already and if so
 # just install deps listed on lock file
 COPY package.json .

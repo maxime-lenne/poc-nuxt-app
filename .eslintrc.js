@@ -26,6 +26,7 @@ module.exports = {
     "vue/max-attributes-per-line": "off",
     "prettier/prettier": ["error", { "semi": false }],
     "quotes": "off",
-    "comma-dangle": "off"
+    "comma-dangle": "off",
+    "import/no-extraneous-dependencies": ["warn"]
   }
 }

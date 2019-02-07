@@ -1,6 +1,6 @@
 const VuetifyLoaderPlugin = require("vuetify-loader/lib/plugin")
 const pkg = require("./package")
-require("dotenv").config()
+import * as dotenv from "dotenv";
 
 module.exports = {
   mode: "universal",
