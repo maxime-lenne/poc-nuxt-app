@@ -30,8 +30,8 @@
     <v-toolbar :clipped-left="clipped" fixed app>
       <v-toolbar-side-icon @click="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
-      <v-spacer></v-spacer>
-      <div v-for="locale in $i18n.locales" v-bind:key="locale.code">
+      <v-spacer />
+      <div v-for="locale in $i18n.locales" :key="locale.code">
         <nuxt-link
           v-if="locale.code !== $i18n.locale"
           :key="locale.code"
