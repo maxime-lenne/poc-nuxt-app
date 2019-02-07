@@ -8,11 +8,8 @@
       app
     >
       <v-list>
-        <v-btn
-          icon
-          @click.stop="miniVariant = !miniVariant"
-        >
-          <v-icon>{{ `chevron_${miniVariant ? 'right' : 'left'}` }}</v-icon>
+        <v-btn icon @click.stop="miniVariant = !miniVariant">
+          <v-icon>{{ `chevron_${miniVariant ? "right" : "left"}` }}</v-icon>
         </v-btn>
         <v-list-tile
           v-for="(item, i) in items"
@@ -51,18 +48,18 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'apps',
-          title: 'Home',
-          to: '/'
+          icon: "apps",
+          title: "Home",
+          to: "/"
         },
         {
-          icon: 'bubble_chart',
-          title: 'Categories',
-          to: '/categories'
+          icon: "bubble_chart",
+          title: "Categories",
+          to: "/categories"
         }
       ],
       miniVariant: false,
-      title: 'Nuxt app'
+      title: "Nuxt app"
     }
   }
 }

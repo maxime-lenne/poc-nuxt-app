@@ -35,14 +35,14 @@ export default {
   data() {
     return {
       headers: [
-        { text: 'Id', align: 'left', sortable: true, value: 'id' },
-        { text: 'Label', value: 'label' },
-        { text: 'Minimum Price', value: 'minimumPrice' },
-        { text: 'Maximum Price', value: 'maximumPrice' },
-        { text: 'Unit', value: 'unit' },
-        { text: 'Placeholder', value: 'placeholder' },
-        { text: 'Created at', value: 'createdAt' },
-        { text: 'Updated at', value: 'updatedAt' }
+        { text: "Id", align: "left", sortable: true, value: "id" },
+        { text: "Label", value: "label" },
+        { text: "Minimum Price", value: "minimumPrice" },
+        { text: "Maximum Price", value: "maximumPrice" },
+        { text: "Unit", value: "unit" },
+        { text: "Placeholder", value: "placeholder" },
+        { text: "Created at", value: "createdAt" },
+        { text: "Updated at", value: "updatedAt" }
       ],
       categories: [],
       errors: []
@@ -51,7 +51,7 @@ export default {
   // Fetches categories when the component is created.
   async created() {
     try {
-      const response = await this.$axios.$get('/categories')
+      const response = await this.$axios.$get("/categories")
       this.categories = response
     } catch (e) {
       this.errors.push(e)
