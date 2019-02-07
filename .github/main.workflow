@@ -44,22 +44,16 @@ action "push-production" {
   uses = "actions/heroku@master"
   needs = "Login"
   args = ["container:push", "-a", "$HEROKU_APP", "web"]
-  secrets = ["HEROKU_API_KEY"]
-  env = {
-    HEROKU_APP = "poc-nuxt-app"
-    API_URL = "https://poc-nest-api.herokuapp.com"
-  }
+  secrets = ["HEROKU_API_KEY", "API_URL", "HEROKU_APP"]
+  env = {}
 }
 
 action "release-production" {
   uses = "actions/heroku@master"
   needs = "push-production"
   args = ["container:release", "-a", "$HEROKU_APP", "web"]
-  secrets = ["HEROKU_API_KEY"]
-  env = {
-    HEROKU_APP = "poc-nuxt-app"
-    API_URL = "https://poc-nest-api.herokuapp.com"
-  }
+  secrets = ["HEROKU_API_KEY", "API_URL", "HEROKU_APP"]
+  env = {}
 }
 
 action "verify-production" {
