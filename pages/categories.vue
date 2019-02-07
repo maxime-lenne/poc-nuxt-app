@@ -1,5 +1,8 @@
 <template>
   <v-layout column justify-center align-center>
+    <h2>
+      Categories :
+    </h2>
     <v-data-table :headers="headers" :items="categories" class="elevation-1">
       <template slot="items" slot-scope="props">
         <td>

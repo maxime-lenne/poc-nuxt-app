@@ -2,7 +2,8 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
+    "cypress/globals": true
   },
   parserOptions: {
     parser: 'babel-eslint'
@@ -14,10 +15,12 @@ module.exports = {
     // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
     // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
     "plugin:vue/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:cypress/recommended"
   ],
   plugins: [
-    'vue'
+    'vue',
+    "cypress"
   ],
   // add your custom rules here
   rules: {
